@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <form action="/getdata" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    name: <input type="text" name="name">
+        <br>
+        <br>
+    age: <input type="text" name="age">
+        <br>
+        <br>
+    birthday: <input type="date" name="birthday">
+        <br>
+        <br>
+    <input type="submit"  onclick="AjaxSumbit()"  value="提交">    <input type="submit" value="删除" >   <input type="submit" value="查看" >
+
+    </form>
+    <br>
+    列表：
+    <table>
+        <tr><td>id</td><td>name</td><td>age</td><td>birthday</td></tr>
+        {% for a in list %}
+         <tr>
+            <td>{{a.id|safe}}</td><td>{{a.name|safe}}</td><td>{{a.age|safe}}</td><td>{{a.birthday}}</td>
+         </tr>
+        {%endfor%}
+    </table>
+    <script>
+        function AjaxSubmit() {
+            var name = $("#vname").val()
+            var age = $("#vage").val()
+            var birthday = $("#vbirthday").val
+            alert(name)
+                $.ajax({
+                    url:'stu/views/getdata',
+                    type:'POST',
+                    data:{vname:name,vage:age,vbirthday:birthday},
+                    success:function (arg) {
+
+                    }
+
+                    }
+                );
+        }
+    </script>
+</body>
+
+</html>
