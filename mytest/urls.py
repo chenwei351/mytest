@@ -19,6 +19,6 @@ from stu import  views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index,name = 'index'),
-    path('', views.getdata, name = 'getdata')
+    path('getdata', views.getdata, name = 'getdata')
 
 ]

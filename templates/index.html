@@ -37,7 +37,7 @@
             var birthday = $("#vbirthday").val
             alert(name)
                 $.ajax({
-                    url:'stu/views/getdata',
+                    url:'getdata',
                     type:'POST',
                     data:{vname:name,vage:age,vbirthday:birthday},
                     success:function (arg) {

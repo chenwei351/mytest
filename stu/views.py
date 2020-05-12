@@ -9,9 +9,11 @@ def index(request):
     if request.POST:
         p=Person(name=request.POST['name'],age=request.POST['age'],birthday=request.POST['birthday'])
         p.save()
-    return getdata(request)
+    #return getdata(request)
+    return render(request, 'index.html', {'list':getdata(request)})
 
 def getdata(request):
     list=Person.objects.all()
     print(list)
-    return render(request, 'index.html',{'list':list})
+    return list
+    #return render(request, 'index.html',{'list':list})
